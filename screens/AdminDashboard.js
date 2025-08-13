@@ -182,15 +182,15 @@ export default function AdminDashboard({ navigation }) {
       <View style={styles.employeeCard}>
         <View style={styles.employeeAvatar}>
           <Text style={styles.employeeInitials}>
-            {item.name ? item.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'N/A'}
+            {item.name ? item.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'EMP'}
           </Text>
         </View>
         
         <View style={styles.employeeInfo}>
-          <Text style={styles.employeeName}>{item.name || 'N/A'}</Text>
-          <Text style={styles.employeeRole}>{item.jobRole || 'N/A'}</Text>
-          <Text style={styles.employeeLocation}>{item.assignedSiteLocation || 'N/A'}</Text>
-          <Text style={styles.employeePhone}>{item.phoneNumber || 'N/A'}</Text>
+          <Text style={styles.employeeName}>{item.name || 'Employee Name'}</Text>
+          <Text style={styles.employeeRole}>{item.jobRole || 'Job Role'}</Text>
+          <Text style={styles.employeeLocation}>{item.assignedSiteLocation || 'Site Location'}</Text>
+          <Text style={styles.employeePhone}>{item.phoneNumber || 'Phone Number'}</Text>
         </View>
         
         <View style={styles.employeeStatus}>
@@ -205,9 +205,9 @@ export default function AdminDashboard({ navigation }) {
   if (!adminProfile) {
     return (
       <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="#FF6B6B" />
+        <StatusBar barStyle="light-content" backgroundColor="#2196F3" />
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#FF6B6B" />
+          <ActivityIndicator size="large" color="#2196F3" />
           <Text style={styles.loadingText}>Loading admin profile...</Text>
         </View>
       </SafeAreaView>
@@ -216,7 +216,7 @@ export default function AdminDashboard({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#FF6B6B" />
+      <StatusBar barStyle="light-content" backgroundColor="#2196F3" />
       
       {/* Header */}
       <View style={styles.header}>
@@ -267,7 +267,7 @@ export default function AdminDashboard({ navigation }) {
         {adminProfile.assignedSiteLocation && (
           <View style={styles.siteLocationCard}>
             <View style={styles.siteLocationHeader}>
-              <Ionicons name="location" size={20} color="#FF6B6B" />
+              <Ionicons name="location" size={20} color="#2196F3" />
               <Text style={styles.siteLocationTitle}>Your Site Location</Text>
             </View>
             <Text style={styles.siteLocationText}>{adminProfile.assignedSiteLocation}</Text>
@@ -281,7 +281,7 @@ export default function AdminDashboard({ navigation }) {
         <View style={styles.employeesContainer}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>
-              Employees at {adminProfile.assignedSiteLocation}
+              Employees at {adminProfile.assignedSiteLocation || 'Site'}
             </Text>
             <TouchableOpacity>
               <Text style={styles.viewAllText}>View All ({employees.length})</Text>
@@ -290,7 +290,7 @@ export default function AdminDashboard({ navigation }) {
           
           {loading ? (
             <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="#FF6B6B" />
+              <ActivityIndicator size="large" color="#2196F3" />
               <Text style={styles.loadingText}>Loading employees...</Text>
             </View>
           ) : (
@@ -304,7 +304,7 @@ export default function AdminDashboard({ navigation }) {
                 <View style={styles.emptyContainer}>
                   <Ionicons name="people-outline" size={48} color="#ccc" />
                   <Text style={styles.emptyText}>
-                    No employees found at {adminProfile.assignedSiteLocation}
+                    No employees found at {adminProfile.assignedSiteLocation || 'this site'}
                   </Text>
                   <Text style={styles.emptySubtext}>
                     Employees need to be assigned to your site location
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   header: {
-    backgroundColor: '#FF6B6B',
+    backgroundColor: '#2196F3',
     paddingVertical: 15,
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -385,7 +385,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 16,
-    color: '#FF6B6B',
+    color: '#2196F3',
     fontWeight: '600',
     marginBottom: 5,
   },
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
   siteLocationText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#FF6B6B',
+    color: '#2196F3',
     marginBottom: 5,
   },
   siteLocationSubtext: {
@@ -491,7 +491,7 @@ const styles = StyleSheet.create({
   },
   viewAllText: {
     fontSize: 14,
-    color: '#FF6B6B',
+    color: '#2196F3',
     fontWeight: '500',
   },
   employeeCard: {
@@ -510,7 +510,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#FF6B6B',
+    backgroundColor: '#2196F3',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,
